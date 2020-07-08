@@ -60,14 +60,14 @@ exports.onCreatePage = async ({ page, actions: { createPage, deletePage } }) => 
   await deletePage(page);
 
 
-  // create the alias for '/' using zh-hk
+  // create the alias for '/' using en
   await createPage({
     ...page,
     path: originalPath,
     context: {
       ...page.context,
       originalPath,
-      lang: 'zh-hk',
+      lang: 'en',
     },
   });
 

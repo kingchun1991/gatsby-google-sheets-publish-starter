@@ -1,6 +1,6 @@
 export const getLocalizedPath = (locale, path) => {
-  if (locale !== 'zh-hk') {
+  if (locale !== 'en') {
     return `/${locale}${path}`;
   }
   return path;
-}
+};
