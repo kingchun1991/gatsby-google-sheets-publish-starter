@@ -1,0 +1,39 @@
+# TODO: refine the settings here
+# TODO: add badge
+language: node_js
+node_js: 12
+cache:
+  yarn: true
+  npm: true
+
+branches:
+  only:
+    - master
+
+before_install:
+  - yarn install
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - yarn lint
+        # TODO: add test
+    - stage: deploy
+      script:
+        - yarn build
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        # In case pushing to different repo
+        # repo: [github_user]/[reponame].github.io
+        # In case you need to setup custom domain
+        # fqdn: [www.abc.com]
+        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        # Keep previous build files, true to support PWA
+        keep-history: true
+        committer_from_gh: true
+        target_branch: gh-pages
+        local-dir: public # the local dir is relative to root and ignoring the one set with before_install
+        on:
+          branch: master
