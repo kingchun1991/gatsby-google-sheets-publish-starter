@@ -4,11 +4,39 @@ import { useTranslation } from 'react-i18next';
 import _get from 'lodash.get';
 
 import Layout from '@/components/layout';
-import Image from '@/components/image';
 import SEO from '@/components/seo';
 import { withLanguage } from '@/libraries/helper/i18n';
 
-const IndexPage = ({ data }) => {
+import ItemCard from '@/components/ItemCard'
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+  },
+  avatar: {
+    margin: 10,
+    width: 70,
+    height: 70,
+  },
+  ListItemParentDiv: {
+    display: "flex",
+  },
+  flexBoxParentDiv: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    flexFlow: "row wrap",
+    justifyContent: "space-between",
+    "&::after": {
+      content: "",
+      flex: "auto",
+    },
+  },
+})
+
+const IndexPage = props => {
+  const { data, classes } = props
   const { i18n } = useTranslation();
 
   const username = withLanguage(
@@ -16,36 +44,45 @@ const IndexPage = ({ data }) => {
     _get(data, 'allKeyValue.edges[0].node', {}),
     'value'
   );
+  //const classes = this.props.classes
+  let items = data.allItem.edges
+
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>
-        Welcome,
-        {/* The value from the google spreadsheet */}
-        {username}
-      </p>
-      <p>Now go build something great.</p>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
+      <div className={classes.root}>
+        <div className={classes.flexBoxParentDiv}>
+          {items.map((item, index) => (
+
+            <ItemCard key={index} item={item} />
+
+          ))}
+        </div>
       </div>
-      <Link to="/page-2/">Go to page 2</Link>
     </Layout>
   );
 };
 
 export const query = graphql`
   query MyQuery {
-    allKeyValue(filter: { key: { eq: "username" } }) {
+    allItem {
       edges {
         node {
-          key
-          value_zh_hk
-          value_en
+          id
+          title_en
+          title_zh_hk
+          description_en
+          description_zh_hk
+          detail_en
+          detail_zh_hk
+          date
+          productImage{
+            publicURL
+          }
         }
       }
     }
   }
 `;
 
-export default IndexPage;
+export default withStyles(styles)(IndexPage);
