@@ -2,7 +2,10 @@ const csv2json = require('csvtojson');
 const fetch = require('node-fetch');
 const config = require('./gatsby-config');
 
+const { getPath } = require('./src/utils/urlHelper');
+
 const isDebug = process.env.NODE_ENV !== 'production';
+const LANGUAGES = ['zh', 'en'];
 
 const createPublishedGoogleSpreadsheetNode = async (
   { actions: { createNode }, createNodeId, createContentDigest },
@@ -59,38 +62,24 @@ exports.sourceNodes = async props => {
   ]);
 };
 
-exports.onCreatePage = async ({ page, actions: { createPage, deletePage } }) => {
-  const originalPath = page.path;
-
-  // Delete the original page (since we are gonna create localized versions of it)
-  await deletePage(page);
-
-
-  // create the alias for '/' using en
-  await createPage({
-    ...page,
-    path: originalPath,
-    context: {
-      ...page.context,
-      originalPath,
-      lang: 'en',
-    },
-  });
-
-
-  await Promise.all(
-    config.siteMetadata.supportedLanguages.map(async ({ locale }) => {
-      const localizedPath = `/${locale}${page.path}`;
-      await createPage({
-        ...page,
-        path: localizedPath,
-        context: {
-          ...page.context,
-          originalPath,
-          lang: locale,
-        },
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+  return new Promise(resolve => {
+    // If it is already eng path we skip to re-generate the locale
+    if (!page.path.match(/^\/en/)) {
+      deletePage(page);
+      LANGUAGES.forEach(lang => {
+        createPage({
+          ...page,
+          path: getPath(lang, page.path),
+          context: {
+            ...page.context,
+            locale: lang,
+          },
+        });
       });
-    })
-  );
+    }
+    resolve();
+  });
 };
 

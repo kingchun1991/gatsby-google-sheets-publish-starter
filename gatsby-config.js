@@ -6,7 +6,6 @@ module.exports = {
     supportedLanguages: [
       { locale:'zh', label:'繁體中文' },
       { locale:'en', label:'English' },
-      { locale:'fr', label:'France' },
     ],
   },
   plugins: [
