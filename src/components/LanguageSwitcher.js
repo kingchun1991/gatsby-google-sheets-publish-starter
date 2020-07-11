@@ -36,11 +36,11 @@ function LanguageSwitcher() {
 
   const changeLanguage = lng => {
     setAnchorEl(null);
-    if (lng === 'zh' && !fullPath.includes('/zh')) {
-      fullPath = removePathTrailingSlash(fullPath.replace('/', '/zh/'));
+    if (lng === 'en' && !fullPath.includes('/en')) {
+      fullPath = removePathTrailingSlash(fullPath.replace('/', '/en/'));
       navigate(fullPath, { replace: true });
-    } else if (lng === 'en' && fullPath.includes('/zh')) {
-      fullPath = removePathTrailingSlash(fullPath.replace('/zh', ''));
+    } else if (lng === 'zh' && fullPath.includes('/en')) {
+      fullPath = removePathTrailingSlash(fullPath.replace('/en', ''));
       navigate(fullPath, { replace: true });
     }
   };
