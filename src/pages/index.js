@@ -60,11 +60,11 @@ export const query = graphql`
         node {
           id
           title_en
-          title_zh_hk
+          title_zh
           description_en
-          description_zh_hk
+          description_zh
           detail_en
-          detail_zh_hk
+          detail_zh
           date
           productImage{
             publicURL

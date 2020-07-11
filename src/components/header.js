@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const renderTitle = () => {
-  return { __html: 'vote 4 <br />hongkong' };
+  return { __html: 'Gatsby Google Sheets Publish Starter' };
 };
 
 export default function Header() {

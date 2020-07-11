@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { useTranslation } from 'react-i18next';
-import { withLanguage } from '@/libraries/helper/i18n';
+import { withLanguage } from '@/utils/i18n';
 import _get from 'lodash.get';
 
 const styles = () => ({
@@ -36,7 +36,6 @@ function ItemCard(props) {
     _get(item, 'node', {}),
     'detail'
   );
-
 
   return (
     <Card className={classes.root}>
