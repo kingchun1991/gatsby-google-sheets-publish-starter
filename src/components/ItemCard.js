@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { withLanguage } from '@/libraries/helper/i18n';
 import _get from 'lodash.get';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     maxWidth: 345,
   },
@@ -21,7 +21,7 @@ const styles = theme => ({
   },
 });
 function ItemCard(props) {
-  //const classes = useStyles();
+  
   const { classes, item } = props
   const { i18n } = useTranslation();
 

@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
-import { useTranslation } from 'react-i18next';
-import _get from 'lodash.get';
+import { graphql } from 'gatsby';
 
 import Layout from '@/components/layout';
 import SEO from '@/components/seo';
-import { withLanguage } from '@/libraries/helper/i18n';
 
 import ItemCard from '@/components/ItemCard'
 import { withStyles } from "@material-ui/core/styles";
@@ -37,24 +34,17 @@ const styles = theme => ({
 
 const IndexPage = props => {
   const { data, classes } = props
-  const { i18n } = useTranslation();
 
-  const username = withLanguage(
-    i18n,
-    _get(data, 'allKeyValue.edges[0].node', {}),
-    'value'
-  );
-  //const classes = this.props.classes
-  let items = data.allItem.edges
+  const items = data.allItem.edges
 
   return (
     <Layout>
       <SEO title="Home" />
       <div className={classes.root}>
         <div className={classes.flexBoxParentDiv}>
-          {items.map((item, index) => (
+          {items.map((item) => (
 
-            <ItemCard key={index} item={item} />
+            <ItemCard key={item.node.id} item={item} />
 
           ))}
         </div>
