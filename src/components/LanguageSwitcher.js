@@ -42,7 +42,7 @@ function LanguageSwitcher() {
     } else if (lng === 'zh' && fullPath.includes('/en')) {
       fullPath = removePathTrailingSlash(fullPath.replace('/en', ''));
       navigate(fullPath, { replace: true });
-    }
+    } 
   };
 
   const { t } = useTranslation();

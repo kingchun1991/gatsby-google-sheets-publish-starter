@@ -10,26 +10,57 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { useTranslation } from 'react-i18next';
+import _isEmpty from 'lodash.isempty';
+import ContextStore from '@/contextStore';
 
-function SEO({ description, meta, title }) {
+function SEO({ meta, uri, titleOveride }) {
   const { t, i18n } = useTranslation();
 
-  const { site } = useStaticQuery(
+  const {
+    route: {
+      state: { path, fullPath },
+    },
+  } = React.useContext(ContextStore);
+
+  const { site, configJson } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+            siteUrl
+          }
+        }
+        configJson {
+          languages
+          pages {
             title
-            description
-            author
+            to
+            icon
           }
         }
       }
     `
   )
 
-  const metaDescription = description || t('app.description')
+  const metaDescription =  t('app.description')
 
+  const currentPage = configJson.pages.find(p => p.to === path) || {};
+  let title = '';
+  if (titleOveride) {
+    title = titleOveride;
+  } else {
+    title = _isEmpty(currentPage) ? t('index.title') : t(currentPage.title);
+    if (_isEmpty(currentPage) && !uri) {
+      console.error(
+        `cannot look up page title. check the settings for path: ${path}`
+      );
+    }
+  }
+  const localePath = i18n.language === 'zh' ? '' : `${i18n.language} /`;
+
+  const siteURL = uri
+    ? `${site.siteMetadata.siteUrl}/${localePath}${uri}`
+    : `${site.siteMetadata.siteUrl}${fullPath}`;
   return (
     <Helmet
       htmlAttributes={{
@@ -53,6 +84,10 @@ function SEO({ description, meta, title }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: 'og:url',
+          content: siteURL,
         },
         {
           name: `twitter:card`,

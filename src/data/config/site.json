@@ -1,0 +1,15 @@
+{
+  "languages": ["zh", "en"],
+  "pages": [
+    {
+      "title": "index.title",
+      "to": "/",
+      "icon": ""
+    },
+    {
+      "title": "primary.title",
+      "to": "/primaries",
+      "icon": "primary"
+    }
+  ]
+}
