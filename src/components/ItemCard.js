@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -21,10 +21,18 @@ const styles = () => ({
   },
 });
 function ItemCard(props) {
-  
-  const { classes, item } = props
+  const { classes, item, locale, ssr } = props;
   const { i18n } = useTranslation();
-
+  useEffect(() => {
+    if (i18n.language !== locale) {
+      i18n.changeLanguage(locale);
+    }
+  }, [i18n, locale]);
+  // since ssr does not have useEffect.
+  // a little bit hacky but welcome for a better solution
+  if (ssr && i18n.language !== locale) {
+    i18n.changeLanguage(locale);
+  }
 
   const title = withLanguage(
     i18n,

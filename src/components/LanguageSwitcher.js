@@ -40,7 +40,7 @@ function LanguageSwitcher() {
       fullPath = removePathTrailingSlash(fullPath.replace('/', '/en/'));
       navigate(fullPath, { replace: true });
     } else if (lng === 'zh' && fullPath.includes('/en')) {
-      fullPath = removePathTrailingSlash(fullPath.replace('/en', ''));
+      fullPath = removePathTrailingSlash(fullPath.replace('/en', '/'));
       navigate(fullPath, { replace: true });
     } 
   };

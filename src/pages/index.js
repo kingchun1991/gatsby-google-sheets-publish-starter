@@ -38,7 +38,7 @@ const IndexPage = props => {
   const items = data.allItem.edges
 
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <div className={classes.root}>
         <div className={classes.flexBoxParentDiv}>
@@ -49,7 +49,7 @@ const IndexPage = props => {
           ))}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
