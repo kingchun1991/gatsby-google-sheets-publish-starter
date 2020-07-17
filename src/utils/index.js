@@ -1,8 +1,9 @@
+export const isSSR = () => typeof window === 'undefined';
+
 export function openInNewTab(url) {
   const win = window.open(url, '_blank');
   win.focus();
 }
-
 
 export const saveToLocalStorage = (key, value) => {
   if (typeof Storage !== 'undefined') {
