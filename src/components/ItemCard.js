@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
+<<<<<<< HEAD
 import { withStyles } from '@material-ui/core/styles';
+=======
+import { withStyles } from "@material-ui/core/styles";
+>>>>>>> b8d8545e547f4a7be2c5f5ccd6b519f419bce286
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';

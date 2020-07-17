@@ -7,7 +7,7 @@ import { ContextStoreProvider } from '@/contextStore';
 import { createDynamicTheme } from '@/components/theme';
 import { ThemeProvider } from 'styled-components';
 import Header from '@components/header';
-//import Footer from './Footer';
+import Footer from './footer';
 import './layout.css';
 
 const ThemeProviderWrapper = ({ children }) => {
@@ -39,7 +39,7 @@ const ThemeProviderWrapper = ({ children }) => {
             <Header />
             <main>{children}</main>
           </Container>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </ThemeProvider>
     </MuiThemeProvider>
