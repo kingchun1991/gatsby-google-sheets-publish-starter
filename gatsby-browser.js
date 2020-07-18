@@ -26,6 +26,10 @@ const Router = ({ path }) => {
   useEffect(() => {
     dispatch({ type: ROUTE_CHANGE, path: actualPath, fullPath: path });
   }, [actualPath, path, dispatch]);
+
+  Object.keys(Object.prototype).forEach(function(extension) {
+    Object.defineProperty(Object.prototype, extension, { enumerable: false });
+  });
   return null;
 };
 
