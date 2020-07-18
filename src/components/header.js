@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigate } from 'gatsby';
+import { navigate, Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +8,8 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import LanguageSwitcher from '@components/LanguageSwitcher';
 import { getLocalizedPath } from '@/utils/i18n';
+import Button from '@material-ui/core/Button';
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,8 +21,8 @@ const useStyles = makeStyles(theme => ({
   toolBar: {
     padding: 0,
     margin: 0,
+
   },
-  menuButton: {},
   title: {
     flexGrow: 1,
   },
@@ -46,7 +48,14 @@ export default function Header() {
                 navigate(getLocalizedPath(i18n, '/'));
               }}
             />
+              <Grid
+                justify="space-between" // Add it here :)
+                container 
+                spacing={24}
+              >
+            <Button color="inherit"><Link to={getLocalizedPath(i18n, `/page-2`)}>Page 2</Link></Button>
             <LanguageSwitcher />
+            </Grid>
           </Toolbar>
         </Container>
       </AppBar>

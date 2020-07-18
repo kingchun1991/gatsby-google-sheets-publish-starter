@@ -42,9 +42,9 @@ const IndexPage = props => {
       <SEO title="Home" />
       <div className={classes.root}>
         <div className={classes.flexBoxParentDiv}>
-          {items.map((item) => (
+          {items.map((item ,index) => (
 
-            <ItemCard key={item.node.id} item={item} />
+            <ItemCard key={index} item={item} />
 
           ))}
         </div>
@@ -55,7 +55,7 @@ const IndexPage = props => {
 
 export const query = graphql`
   query MyQuery {
-    allItem {
+    allItem(sort: {fields: datetime, order: DESC}) {
       edges {
         node {
           id
@@ -65,7 +65,7 @@ export const query = graphql`
           description_zh
           detail_en
           detail_zh
-          date
+          datetime
           productImage{
             publicURL
           }

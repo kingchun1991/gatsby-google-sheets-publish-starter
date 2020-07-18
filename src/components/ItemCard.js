@@ -6,8 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import ShareIcon from '@material-ui/icons/Share';
 import { red } from '@material-ui/core/colors';
 
 import ShareButton from '@/components/ShareButton';
@@ -15,6 +13,10 @@ import ShareButton from '@/components/ShareButton';
 import { useTranslation } from 'react-i18next';
 import { withLanguage } from '@/utils/i18n';
 import _get from 'lodash.get';
+
+import moment from 'moment';
+import tz from 'moment-timezone';
+
 
 const styles = () => ({
   root: {
@@ -40,9 +42,11 @@ function ItemCard(props) {
   if (ssr && i18n.language !== locale) {
     i18n.changeLanguage(locale);
   }
+  
 
   const title = withLanguage(i18n, _get(item, 'node', {}), 'title');
   const detail = withLanguage(i18n, _get(item, 'node', {}), 'detail');
+  const sinceNow = moment(`${item.node.datetime}`).tz('America/New_York').fromNow()
 
   return (
     <Card className={classes.root}>
@@ -53,12 +57,10 @@ function ItemCard(props) {
           </Avatar>
         }
         action={
-          <IconButton aria-label="share">
-            <ShareButton id={item.id} />
-          </IconButton>
+          <ShareButton id={item.node.id} />
         }
         title={`${title}`}
-        subheader="September 14, 2016"
+        subheader={`${sinceNow}`}
       />
       <CardMedia
         className={classes.media}
