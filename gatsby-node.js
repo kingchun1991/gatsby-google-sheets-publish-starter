@@ -50,12 +50,6 @@ exports.sourceNodes = async props => {
   await Promise.all([
     createPublishedGoogleSpreadsheetNode(
       props,
-      'https://docs.google.com/spreadsheets/d/e/2PACX-1vSp3oltt5RkGHzhSBQ24J9cNZXL8YWF4gvVdJFe5tXRgJ9lM9ZNxDeKWgPmYebAeIFuuts4ktiwh78f/pub?gid=0',
-      "KeyValue",
-      { skipFirstLine: true }
-    ),
-    createPublishedGoogleSpreadsheetNode(
-      props,
       'https://docs.google.com/spreadsheets/d/e/2PACX-1vTMf21Q2u8IXza55EClr4tlEn-hpHwoyZGxqS1Wy9xfjDRF5fy0MGjice0i2ONIaoIdp72pHQem7O6Z/pub?gid=0',
       "Item",
       { skipFirstLine: true }
