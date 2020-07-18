@@ -48,7 +48,7 @@ function ItemCard(props) {
   const detail = withLanguage(i18n, _get(item, 'node', {}), 'detail');
   
   const datetimefromtwitter = moment(`${item.node.datetime}`).tz('America/New_York')
-  const sinceNow = datetimefromtwitter.isValid ? Object.prototype.toString.call(end_datedatetimefromtwitter.fromNow()) : ''
+  const sinceNow = datetimefromtwitter.isValid ? datetimefromtwitter.fromNow().toString() : ''
 
   return (
     <Card className={classes.root}>
