@@ -100,7 +100,11 @@ function ShareButton(props) {
     let url = `${site.siteMetadata.siteUrl}${fullPath}`;
 
     if (props.id) {
-      url = `${site.siteMetadata.siteUrl}${fullPath}item/${props.id}`;
+      url = `${site.siteMetadata.siteUrl}${fullPath}`;
+      if (url.substr(-1) != '/') 
+        url += `/item/${props.id}`
+      else
+        url += `item/${props.id}`
     }
 
     if (!isSSR()) {
