@@ -1,4 +1,4 @@
-const SITE_URL = process.env.SITE_URL || 'http://localhost:8000'
+const SITE_URL = process.env.SITE_URL || 'https://gatsby-google-sheets-publish-starter.netlify.app'
 const GOOGLE_TRACKING_ID = process.env.GOOGLE_TRACKING_ID || 'UA-111111111-1';
 
 module.exports = {
