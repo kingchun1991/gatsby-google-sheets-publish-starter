@@ -46,11 +46,7 @@ function ItemCard(props) {
 
   const title = withLanguage(i18n, _get(item, 'node', {}), 'title');
   const detail = withLanguage(i18n, _get(item, 'node', {}), 'detail');
-  Object.prototype.randomExtension = true;
-  Object.keys(Object.prototype).forEach(function(extension) {
-    Object.defineProperty(Object.prototype, extension, { enumerable: false });
-  });
-  const sinceNow = moment(`${item.node.datetime}`).tz('America/New_York').fromNow()
+  const sinceNow = moment(`${item.node.datetime}`).tz('America/New_York')
 
   return (
     <Card className={classes.root}>
