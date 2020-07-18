@@ -59,14 +59,14 @@ export default function Footer() {
                 item
                 className="clickable"
                 onClick={() =>
-                  openInNewTab('https://github.com/vote4hk/legco2020')}
+                  openInNewTab('https://github.com/')}
               >
                 {/* <FaGithub /> */}
               </Grid>
               <Grid
                 item
                 className="clickable"
-                onClick={() => openInNewTab('https://fb.me/vote4hongkong')}
+                onClick={() => openInNewTab('https://fb.me/')}
               >
                 {/* <FaFacebook /> */}
               </Grid>
@@ -80,21 +80,21 @@ export default function Footer() {
               <p>
                 <a
                   className={classes.noStyle}
-                  href="http://covid19.vote4.hk/"
+                  href="http://www.google.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {t('footer.other_websites.warshk')}
+                  {t('footer.other_websites.google')}
                 </a>
               </p>
               <p>
                 <a
                   className={classes.noStyle}
-                  href="http://dce2019.vote4.hk/"
+                  href="http://www.google.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {t('footer.other_websites.vote4hk')}
+                  {t('footer.other_websites.google')}
                 </a>
               </p>
             </div>
@@ -110,31 +110,31 @@ export default function Footer() {
               <p>
                 <a
                   className={classes.noStyle}
-                  href="https://forms.gle/vUX2u94GD3wg46H87"
+                  href="http://www.google.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {t('footer.other_websites.google_form')}
+                  {t('footer.other_websites.google')}
                 </a>
               </p>
               <p>
                 <a
                   className={classes.noStyle}
-                  href="https://www.factchecklab.org/"
+                  href="http://www.google.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {t('footer.other_websites.factchecklab')}
+                  {t('footer.other_websites.google')}
                 </a>
               </p>
               <p>
                 <a
                   className={classes.noStyle}
-                  href="https://legco2020.com"
+                  href="http://www.google.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {t('footer.other_websites.lecgo2020')}
+                  {t('footer.other_websites.http://www.google.com/')}
                 </a>
               </p>
             </div>
