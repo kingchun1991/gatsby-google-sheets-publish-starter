@@ -39,23 +39,24 @@ const ItemPage = props => {
   const { t, i18n } = useTranslation()
   const item = data.item;
   const title = withLanguage(i18n, data.item, 'title');
+  const detail = withLanguage(i18n, data.item, "detail");
   return (
     <>
       <SEO
         uri={uri}
-        titleOveride={t("case.title")}
+        titleOveride={`${title}`}
         title= {title}
         // TODO: duplicated entries, filter out in SEO later?
         meta={[
           {
             property: `og:title`,
-            content: `${title} | ${t("case.case_no", {
+            content: `${title} , {
               id: data.item.id,
             })}`,
           },
           {
             property: `og:description`,
-            content: withLanguage(i18n, data.item, "detail"),
+            content: `${title}`,
           },
         ]}
       />

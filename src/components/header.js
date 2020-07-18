@@ -26,6 +26,11 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  button:{
+    position: 'absolute',
+    'padding-right': 10,
+    right: 30,
+  }
 }));
 
 const renderTitle = () => {
@@ -48,14 +53,8 @@ export default function Header() {
                 navigate(getLocalizedPath(i18n, '/'));
               }}
             />
-              <Grid
-                justify="space-between" // Add it here :)
-                container 
-                spacing={24}
-              >
-            <Button color="inherit"><Link to={getLocalizedPath(i18n, `/page-2`)}>Page 2</Link></Button>
-            <LanguageSwitcher />
-            </Grid>
+          <Button color="inherit" className={classes.button}><Link to={getLocalizedPath(i18n, `/page-2`)}>Page 2</Link></Button>
+          <LanguageSwitcher />
           </Toolbar>
         </Container>
       </AppBar>
