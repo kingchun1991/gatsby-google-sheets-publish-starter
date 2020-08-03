@@ -108,12 +108,11 @@ exports.createPages = ({ actions, graphql }) => {
     }
     const items = result.data.allItem.edges;
 
+    // create share page
     items.forEach(edge => {
       LANGUAGES.forEach(lang => {
         const id = edge.node.id;
         const uri = getPath(lang, `/item/${id}`);
-        //const title = edge.node.title
-        //const videoPath = `/video/${_.kebabCase(title)}/`
 
         createPage({
           path: uri,
