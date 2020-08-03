@@ -9,6 +9,7 @@ import { fade, withStyles } from "@material-ui/core/styles";
 
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
   root: {
@@ -34,6 +35,7 @@ const styles = theme => ({
     },
   },
   search: {
+    justifyContent: "center",
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -111,6 +113,7 @@ const IndexPage = props => {
     <>
       <SEO title="Home" />
       <div className={classes.root}>
+      <Box display="flex" justifyContent="center" m={1} p={1} bgcolor="background.paper">
         <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -125,8 +128,10 @@ const IndexPage = props => {
                 onChange={onChange}
               />
           </div>
+          </Box>
           Number of items:
               {queryResults.length}
+              
         <div className={classes.flexBoxParentDiv}>
           {queryResults.map((item ,index) => (
 
