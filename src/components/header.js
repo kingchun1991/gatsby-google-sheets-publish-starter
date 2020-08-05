@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const renderTitle = () => {
-  return { __html: "<img src='https://scontent.fhkg1-1.fna.fbcdn.net/v/t1.0-9/109539830_2703031613310896_5164645320361941561_o.png?_nc_cat=109&_nc_sid=8024bb&_nc_ohc=M0_3t6MX4eEAX_tlchl&_nc_ht=scontent.fhkg1-1.fna&oh=6e57d4a0ccdc8f4062af8bfb322cf6c5&oe=5F383EA7' alt='ballshoesguide' width='250' height='40'>" };
+  return { __html: 'Gatsby Google Sheets Publish Starter' };
 };
 
 export default function Header() {
