@@ -83,7 +83,7 @@ const IndexPage = props => {
   // const [search, setSearch] = useState(null);
   // const [isError, setIsError] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-     
+
   // setIsLoading(true);
   // setSearchResults([]);
   // setSearch(null);
@@ -93,7 +93,7 @@ const IndexPage = props => {
   const { data, classes } = props
 
   const items = data.allItem.edges
-  
+
 
   var jsSearch = new JsSearch.Search(['node', 'id']);
   jsSearch.addIndex(['node', 'title_en']);
@@ -113,27 +113,27 @@ const IndexPage = props => {
     <>
       <SEO title="Home" />
       <div className={classes.root}>
-      <Box display="flex" justifyContent="center" m={1} p={1} bgcolor="background.paper">
-        <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-                onChange={onChange}
-              />
+        <Box display="flex" justifyContent="center" m={1} p={1} bgcolor="background.paper">
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+              onChange={onChange}
+            />
           </div>
-          </Box>
+        </Box>
           Number of items:
               {queryResults.length}
-              
+
         <div className={classes.flexBoxParentDiv}>
-          {queryResults.map((item ,index) => (
+          {queryResults.map((item, index) => (
 
             <ItemCard key={index} item={item} />
 
