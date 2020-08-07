@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { graphql, useStaticQuery } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ItemCard from '@/components/ItemCard2'
